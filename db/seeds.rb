@@ -21,6 +21,8 @@ include RandomData
    )
  end
 
+ Post.find_or_create_by(title: "Obama... he got us a phone", body: "He goin do more")
+
  puts "Seed finished"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
