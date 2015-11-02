@@ -13,8 +13,9 @@ class AdvertisementController < ApplicationController
 
   def create
     @advertisement = Advertisement.new
-    @advertisement.title = params[:post][:title]
-    @advertisement.body = params[:post][:body]
+    @advertisement.title = params[:advertisement][:title]
+    @advertisement.copy = params[:advertisement][:copy]
+    @advertisement.price = params[:advertisement][:price]
 
 # #10
     if @advertisement.save
