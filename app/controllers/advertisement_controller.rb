@@ -19,11 +19,11 @@ class AdvertisementController < ApplicationController
 # #10
     if @advertisement.save
 # #11
-      flash[:notice] = "Post was saved."
+      flash[:notice] = "Ad was saved."
       redirect_to @advertisement
     else
 # #12
-      flash[:error] = "There was an error saving the post. Please try again."
+      flash[:error] = "There was an error saving the Ad. Please try again."
       render :new
     end
   end
