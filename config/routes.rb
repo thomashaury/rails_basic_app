@@ -1,12 +1,22 @@
 Rails.application.routes.draw do
 
+  get 'sponsoredposts/edit' => 'sponsored_post_controller#edit'
+
+  get 'sponsoredposts/new' => 'sponsored_post_controller#new'
+
+  get 'sponsoredposts/show' => 'sponsored_post_controller#show'
+
   resources :advertisement, :question
   resources :topics do
- # #34
-     resources :posts, except: [:index]
-   end
+    resources :posts
+    resources :sponsored_posts, except: [:index]
+  end
+
+  get 'mastercommander' => 'posts#mastercommander'
 
   get 'about' => 'welcome#about'
+
+  get 'poopoopants' => 'posts#poopoopants'
 
    root to: 'welcome#index'
 
