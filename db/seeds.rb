@@ -3,7 +3,6 @@ include RandomData
 # Create Topics
  15.times do
    Topic.create!(
-     topic: topic.sample,
      name:         RandomData.random_sentence,
      description:  RandomData.random_paragraph
    )
@@ -16,11 +15,32 @@ include RandomData
    Post.create!(
  # #2
      title:  RandomData.random_sentence,
-     body:   RandomData.random_paragraph
+     body:   RandomData.random_paragraph,
+     topic: topics.sample
    )
  end
  posts = Post.all
 
+ #Create SponsoredPosts
+50.times do
+
+  SponsoredPost.create!(
+
+    title: RandomData.random_sentence,
+    body: RandomData.random_paragraph
+  )
+end
+sponsoredposts = SponsoredPost.all
+
+50.times do
+
+  Advertisement.create!(
+
+    title: RandomData.random_sentence,
+    copy: RandomData.random_paragraph
+  )
+end
+advertisements = Advertisement.all
  # Create Comments
  # #3
  100.times do
@@ -36,4 +56,5 @@ include RandomData
  puts "Seed finished"
  puts "#{Topic.count} topics created"
  puts "#{Post.count} posts created"
+ puts "#{SponsoredPost.count} sponsoredposts created"
  puts "#{Comment.count} comments created"

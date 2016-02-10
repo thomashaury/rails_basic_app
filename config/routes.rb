@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
 
-  get 'sponsoredposts/edit' => 'sponsored_post_controller#edit'
+  # get 'sponsoredposts/edit' => 'sponsored_post_controller#edit'
+  #
+  # get 'sponsoredposts/new' => 'sponsored_post_controller#new'
+  #
+  # get 'sponsoredposts/show' => 'sponsored_post_controller#show'
 
-  get 'sponsoredposts/new' => 'sponsored_post_controller#new'
+  # resources :advertisement, :question
 
-  get 'sponsoredposts/show' => 'sponsored_post_controller#show'
-
-  resources :advertisement, :question
   resources :topics do
-    resources :posts
+    resources :posts, except: [:index]
     resources :sponsored_posts, except: [:index]
   end
 
