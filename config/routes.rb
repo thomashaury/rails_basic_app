@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     resources :sponsored_posts, except: [:index]
   end
 
+  # #8
+  resources :users, only: [:new, :create]
+
   get 'mastercommander' => 'posts#mastercommander'
 
   get 'about' => 'welcome#about'
