@@ -15,6 +15,9 @@ Rails.application.routes.draw do
 
   # #8
   resources :users, only: [:new, :create]
+
+  resources :sessions, only: [:new, :create, :destroy]
+  
   post 'users/confirm'=> 'users#confirm'
 
   get 'mastercommander' => 'posts#mastercommander'
