@@ -1,4 +1,14 @@
 include RandomData
+# Create Users
+ 5.times do
+   User.create!(
+ # #3
+   name:     RandomData.random_name,
+   email:    RandomData.random_email,
+   password: RandomData.random_sentence
+   )
+ end
+ users = User.all
 
 # Create Topics
  15.times do
@@ -14,6 +24,7 @@ include RandomData
  # #1
    Post.create!(
  # #2
+     user:   users.sample,
      title:  RandomData.random_sentence,
      body:   RandomData.random_paragraph,
      topic: topics.sample
@@ -53,7 +64,14 @@ advertisements = Advertisement.all
 
  Post.find_or_create_by(title: "Obama... he got us a phone", body: "He goin do more")
 
+ user = User.first
+  user.update_attributes!(
+    email: 'thomashaury@yahoo.com', # replace this with your personal email
+    password: 'helloworld'
+  )
+
  puts "Seed finished"
+ puts "#{User.count} users created"
  puts "#{Topic.count} topics created"
  puts "#{Post.count} posts created"
  puts "#{SponsoredPost.count} sponsoredposts created"
