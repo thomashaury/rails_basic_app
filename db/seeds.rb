@@ -64,9 +64,18 @@ advertisements = Advertisement.all
 
  Post.find_or_create_by(title: "Obama... he got us a phone", body: "He goin do more")
 
- user = User.first
-  user.update_attributes!(
-    email: 'thomashaury@yahoo.com', # replace this with your personal email
+ # Create an admin user
+  admin = User.create!(
+    name:     'Admin User',
+    email:    'admin@example.com',
+    password: 'helloworld',
+    role:     'admin'
+  )
+
+  # Create a member
+  member = User.create!(
+    name:     'Member User',
+    email:    'member@example.com',
     password: 'helloworld'
   )
 
