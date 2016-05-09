@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'comments/show'
+
   resources :labels, only: [:show]
 
   # get 'sponsoredposts/edit' => 'sponsored_post_controller#edit'
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   resources :topics do
     resources :posts, except: [:index]
     resources :sponsored_posts, except: [:index]
+    resources :comments, only: [:create, :destroy]
   end
 
     # #4
