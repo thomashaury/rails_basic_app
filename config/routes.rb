@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :labels, only: [:show]
+
   # get 'sponsoredposts/edit' => 'sponsored_post_controller#edit'
   #
   # get 'sponsoredposts/new' => 'sponsored_post_controller#new'
