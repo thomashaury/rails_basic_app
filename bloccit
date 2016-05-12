@@ -1,0 +1,55 @@
+
+Post
+  has_many :comments, as: commentable
+
+
+Topic
+  has_many :comments, as: :commentable
+
+
+Comment
+  ## commentable_type # 'Post', 'Topic'
+  belongs_to :commentable, polymorphic: true
+
+
+========
+
+
+Post
+  has_many :labelings
+  has_many :labels, through: :labelings, as: :labelable
+
+Topic
+  has_many :labelings
+  has_many :labels, through :labelings, as: labelable
+
+
+Labeling
+  belongs_to :labelable, polymorphic: true
+  belongs_to :label
+
+
+Label
+  # name
+  has_many :post_labels
+  has_many :posts, through: :labeling
+
+======
+
+
+User
+  has_many :usbscriptions
+  has_many :magazines,. through: :subscriptions
+
+
+Subscription
+  belongs_to :user
+  belongs_to :magazine
+  expires on
+  discount code
+
+
+
+Magazine
+  has_many :subscriptions
+  has_manyh :users, throug: subscriptions
