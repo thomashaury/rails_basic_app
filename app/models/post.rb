@@ -7,6 +7,8 @@ class Post < ActiveRecord::Base
   has_many :labels, through: :labelings
   has_many :commentings, as: :commentable
    has_many :comments, through: :commentings
+   after_create :create_vote
+
 
 
   default_scope { order('rank DESC') }
@@ -36,4 +38,8 @@ class Post < ActiveRecord::Base
     new_rank = points + age_in_days
     update_attribute(:rank, new_rank)
   end
+  private
+
+    def create_vote
+      user.votes.create(value: 1,post: self)
 end
