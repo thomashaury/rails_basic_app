@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :posts, except: [:index]
     resources :sponsored_posts, except: [:index]
     resources :comments, only: [:create, :destroy]
+    resources :favorites, only: [:create, :destroy]
+
   end
 
     # #4

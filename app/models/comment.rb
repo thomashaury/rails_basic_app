@@ -20,5 +20,13 @@ class Comment < ActiveRecord::Base
        Comment.find_or_create_by(name: comment.strip)
      end
    end
+   after_create :send_favorite_emails
 
+   private
+
+   def send_favorite_emails
+     post.favorites.each do |favorite|
+       FavoriteMailer.new_comment(favorite.user, post, self).deliver_now
+     end
+   end
 end
