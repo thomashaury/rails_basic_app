@@ -3,10 +3,9 @@ include RandomData
 
 RSpec.describe Post, type: :model do
   # #1
-  let(:topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph) }
-  let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
-# #4
- let(:post) { topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user) }
+  let(:topic) { create(:topic) }
+  let(:user) { create(:user) }
+  let(:post) { create(:post) }
 
   it { is_expected.to have_many(:labelings) }
   it { is_expected.to have_many(:labels).through(:labelings) }
@@ -29,7 +28,7 @@ RSpec.describe Post, type: :model do
    describe "attributes" do
  # #2
      it "should respond to title" do
-       expect(post).to respond_to(:title)
+        expect(post).to have_attributes(title: post.title, body: post.body)
      end
  # #3
      it "should respond to body" do
